@@ -9,7 +9,7 @@ Track your daily spending, analyze habits, and stay within budget — all from y
 
 ---
 
-🚀 Features
+Features
 
 - ➕ Add new expenses
 - 📋 View all expenses in table format
