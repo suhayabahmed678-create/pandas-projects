@@ -11,21 +11,21 @@ Track your daily spending, analyze habits, and stay within budget — all from y
 
 Features
 
-Add new expenses
+-Add new expenses
 
-View all expenses in table format
+-View all expenses in table format
 
-Monthly summary (using pandas groupby)
+-Monthly summary (using pandas groupby)
 
-Budget tracking system
+-Budget tracking system
 
-Set monthly budget per category
+-Set monthly budget per category
 
-Delete expenses by ID
+-Delete expenses by ID
 
-Top 5 highest spending
+-Top 5 highest spending
 
-CSV-based storage (no database needed)
+-CSV-based storage (no database needed)
 
 ---
 
