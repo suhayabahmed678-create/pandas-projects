@@ -1,7 +1,7 @@
 # pandas-projects
 
 project 1
-# 💸 Smart Expense Tracker — Student Edition
+Smart Expense Tracker — Student Edition
 
 A simple yet powerful **pandas-based CLI expense tracker** designed for students.
 
