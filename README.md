@@ -43,3 +43,40 @@ Installation
 git clone https://github.com/suhayab/smart-expense-tracker.git
 cd smart-expense-tracker
 pip install -r requirements.txt
+
+2nd project:
+🚀 Project Description
+
+This project is a CLI-based data cleaning pipeline designed to automate the most important steps in data preprocessing.
+
+It takes a raw CSV file and performs:
+
+Data inspection
+Missing value handling
+Duplicate removal
+Categorical encoding
+Feature scaling
+Clean dataset export
+
+This is a real-world implementation of core concepts from:
+
+Data Science
+
+Machine Learning
+
+Data Preprocessing
+
+
+Features
+✅ Load CSV data safely
+✅ Detailed data inspection report
+✅ Missing value handling (auto / mean / drop)
+✅ Duplicate row removal
+✅ Categorical encoding (Label / One-Hot)
+✅ Numerical scaling (Min-Max / Standard)
+✅ Automatic logging system
+✅ Timestamped output files
+✅ CLI-based user interaction
+✅ Demo dataset generator included
+
+
