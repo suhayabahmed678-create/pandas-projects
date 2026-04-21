@@ -29,7 +29,7 @@ Features
 
 ---
 
-## 🧠 Tech Stack
+Tech Stack
 
 - Python 🐍
 - pandas 📊
@@ -37,7 +37,7 @@ Features
 
 ---
 
-## 📦 Installation
+Installation
 
 ```bash
 git clone https://github.com/suhayab/smart-expense-tracker.git
