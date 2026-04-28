@@ -45,7 +45,7 @@ cd smart-expense-tracker
 pip install -r requirements.txt
 
 2nd project:
-🚀 Project Description
+Project Description
 
 This project is a CLI-based data cleaning pipeline designed to automate the most important steps in data preprocessing.
 
@@ -68,15 +68,15 @@ Data Preprocessing
 
 
 Features
-✅ Load CSV data safely
-✅ Detailed data inspection report
-✅ Missing value handling (auto / mean / drop)
-✅ Duplicate row removal
-✅ Categorical encoding (Label / One-Hot)
-✅ Numerical scaling (Min-Max / Standard)
-✅ Automatic logging system
-✅ Timestamped output files
-✅ CLI-based user interaction
-✅ Demo dataset generator included
+ Load CSV data safely
+ Detailed data inspection report
+ Missing value handling (auto / mean / drop)
+ Duplicate row removal
+ Categorical encoding (Label / One-Hot)
+ Numerical scaling (Min-Max / Standard)
+ Automatic logging system
+ Timestamped output files
+ CLI-based user interaction
+ Demo dataset generator included
 
 
