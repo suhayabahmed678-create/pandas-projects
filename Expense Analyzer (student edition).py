@@ -214,14 +214,14 @@ def delete_expense(df:pd.DataFrame) -> pd.DataFrame:
 
     df = df[df["id"] != exp_id].reset_index(drop=True)
     save_data(df)
-    print(f"✅ Expense #{exp_id} deleted.")
+    print(f" Expense #{exp_id} deleted.")
     return df
 
 
 
 def top_spending(df: pd.DataFrame) -> None:
     """Show top 5 highest expenses using pandas nlargest."""
-    header("🏆  Top 5 Expenses")
+    header("  Top 5 Expenses")
     if df.empty:
         print("  No data.")
         return
@@ -236,17 +236,17 @@ def main():
     df = load_data()
 
     menu = """
-  1. ➕  Add Expense
-  2. 📋  View All Expenses
-  3. 📊  Monthly Summary
-  4. 🎯  Budget Check
-  5. 💰  Set Budget
-  6. 🗑️  Delete Expense
-  7. 🏆  Top 5 Expenses
-  0. 🚪  Exit
+  1.   Add Expense
+  2.   View All Expenses
+  3.   Monthly Summary
+  4.   Budget Check
+  5.   Set Budget
+  6.   Delete Expense
+  7.   Top 5 Expenses
+  0.   Exit
 """
     while True:
-        header("💸  Smart Expense Tracker — Student Edition")
+        header("  Smart Expense Tracker — Student Edition")
         print(menu)
         choice = input("  Choose option: ").strip()
 
@@ -258,10 +258,10 @@ def main():
         elif choice == "6": df = delete_expense(df)
         elif choice == "7": top_spending(df)
         elif choice == "0":
-            print("\n  👋 Bye! Track smart, spend wise.\n")
+            print("\n   Bye! Track smart, spend wise.\n")
             sys.exit(0)
         else:
-            print("❌ Invalid option.")
+            print(" Invalid option.")
 
         input("\n  Press Enter to continue...")
 
