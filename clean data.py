@@ -1,22 +1,3 @@
-"""
-Data Cleaning & Preprocessing Pipeline
-=======================================
-Turn raw, messy data into clean ML-ready datasets.
-
-Author  : Your Name
-GitHub  : https://github.com/yourusername
-License : MIT
-
-Pipeline Steps:
-  1. Load CSV data
-  2. Inspect & report issues
-  3. Handle missing values
-  4. Remove duplicates
-  5. Encode categorical columns (Label / One-Hot)
-  6. Scale numerical columns (Min-Max / Standard)
-  7. Export clean dataset
-"""
-
 import pandas as pd
 import numpy as np
 import os
@@ -27,7 +8,7 @@ from datetime import datetime
 OUTPUT_DIR  = "cleaned_output"
 LOG_FILE    = os.path.join(OUTPUT_DIR, "pipeline_log.txt")
 
-# ── Utilities ─────────────────────────────────────────────────────────────────
+# ── Utilities 
 
 def separator(char: str = "─", width: int = 55) -> None:
     print(char * width)
@@ -44,23 +25,23 @@ def log(message: str) -> None:
     with open(LOG_FILE, "a") as f:
         f.write(message + "\n")
 
-# ── Step 1: Load Data ─────────────────────────────────────────────────────────
+# ── Step 1: Load Data 
 
 def load_data(filepath: str) -> pd.DataFrame:
     """Load CSV into DataFrame with basic validation."""
     header("  Step 1 — Load Data")
 
     if not os.path.exists(filepath):
-        log(f"❌ File not found: {filepath}")
+        log(f" File not found: {filepath}")
         sys.exit(1)
 
     df = pd.read_csv(filepath)
-    log(f"✅ Loaded: {filepath}")
+    log(f" Loaded: {filepath}")
     log(f"   Shape  : {df.shape[0]} rows × {df.shape[1]} columns")
     log(f"   Columns: {list(df.columns)}")
     return df
 
-# ── Step 2: Inspect & Report ──────────────────────────────────────────────────
+# ── Step 2: Inspect & Report 
 
 def inspect_data(df: pd.DataFrame) -> dict:
     """Analyze and report data quality issues."""
@@ -87,10 +68,10 @@ def inspect_data(df: pd.DataFrame) -> dict:
         else:
             log(f"  {col:<25}     0 missing  (0.0%)")
 
-    log(f"\n  🔁 Duplicate Rows  : {dup_count}")
-    log(f"  🔢 Numeric Columns : {num_cols}")
-    log(f"  🔤 Category Columns: {cat_cols}")
-    log(f"  📦 Total Cells     : {total_cells}")
+    log(f"\n   Duplicate Rows  : {dup_count}")
+    log(f"   Numeric Columns : {num_cols}")
+    log(f"   Category Columns: {cat_cols}")
+    log(f"   Total Cells     : {total_cells}")
 
     return {
         "missing"  : missing,
@@ -99,7 +80,7 @@ def inspect_data(df: pd.DataFrame) -> dict:
         "cat_cols" : cat_cols,
     }
 
-# ── Step 3: Handle Missing Values ─────────────────────────────────────────────
+# ──  Handle Missing Values 
 
 def handle_missing(df: pd.DataFrame, strategy: str = "auto") -> pd.DataFrame:
     """
@@ -115,7 +96,7 @@ def handle_missing(df: pd.DataFrame, strategy: str = "auto") -> pd.DataFrame:
 
     if strategy == "drop":
         df = df.dropna().reset_index(drop=True)
-        log(f"  ✅ Dropped rows with missing values.")
+        log(f"   Dropped rows with missing values.")
 
     else:
         num_cols = df.select_dtypes(include=[np.number]).columns
@@ -125,24 +106,24 @@ def handle_missing(df: pd.DataFrame, strategy: str = "auto") -> pd.DataFrame:
             if df[col].isnull().any():
                 fill_val = df[col].mean() if strategy == "mean" else df[col].median()
                 df[col]  = df[col].fillna(round(fill_val, 4))
-                log(f"  ✅ {col:<22} → filled with {strategy} ({round(fill_val,4)})")
+                log(f"   {col:<22} → filled with {strategy} ({round(fill_val,4)})")
 
         for col in cat_cols:
             if df[col].isnull().any():
                 fill_val = df[col].mode()[0]
                 df[col]  = df[col].fillna(fill_val)
-                log(f"  ✅ {col:<22} → filled with mode ('{fill_val}')")
+                log(f"   {col:<22} → filled with mode ('{fill_val}')")
 
     after = df.isnull().sum().sum()
     log(f"\n  Missing before : {before}")
     log(f"  Missing after  : {after}")
     return df
 
-# ── Step 4: Remove Duplicates ─────────────────────────────────────────────────
+#   Remove Duplicates 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     """Drop exact duplicate rows."""
-    header("🗑️   Step 4 — Remove Duplicates")
+    header("   Step 4 — Remove Duplicates")
 
     before = len(df)
     df     = df.drop_duplicates().reset_index(drop=True)
@@ -153,7 +134,7 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     log(f"  Removed     : {before - after} duplicate(s)")
     return df
 
-# ── Step 5: Encode Categorical Columns ───────────────────────────────────────
+# Encode Categorical Columns 
 
 def encode_categorical(df: pd.DataFrame, method: str = "label") -> pd.DataFrame:
     """
@@ -162,12 +143,12 @@ def encode_categorical(df: pd.DataFrame, method: str = "label") -> pd.DataFrame:
         'label'   → LabelEncoder-style (pandas factorize)
         'onehot'  → pd.get_dummies (creates binary columns)
     """
-    header("🔢  Step 5 — Encode Categorical Columns")
+    header("  Step 5 — Encode Categorical Columns")
 
     cat_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
 
     if not cat_cols:
-        log("  ℹ️  No categorical columns found. Skipping.")
+        log("    No categorical columns found. Skipping.")
         return df
 
     if method == "onehot":
