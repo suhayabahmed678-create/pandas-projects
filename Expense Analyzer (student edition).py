@@ -1,6 +1,6 @@
 """
 Smart Expense Tracker - Student Edition
-========================================
+
 A pandas-focused CLI expense tracker built for students.
 Track daily spending, analyze habits, and stay within budget.
 
@@ -14,7 +14,7 @@ import sys
 from datetime  import datetime,date
 
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# ── Config 
 DATA_FILE = 'expense.csv'
 BUDGET_FILE = 'budget.csv'
 
@@ -25,7 +25,7 @@ CATEGORIES = [
 
 COLUMNS = ["id", "date", "category", "description", "amount"]
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# ── Helpers 
 
 def load_data() -> pd.DataFrame:
     """Load expenses from CSV, or create empty DataFrame."""
@@ -57,7 +57,7 @@ def header(title: str) -> None:
     print(F"  {title}")
     separator("=")
 
-# ── Core Features ─────────────────────────────────────────────────────────────
+# ── Core Features 
 
 def add_expense (df: pd.DataFrame ) -> pd.DataFrame:
     header("➕  Add New Expense")
@@ -230,7 +230,7 @@ def top_spending(df: pd.DataFrame) -> None:
     top["amount"] = top["amount"].map("${:.2f}".format)
     print(top.to_string(index=False))
 
-# ── Main Menu ─────────────────────────────────────────────────────────────────
+# ── Main Menu 
 
 def main():
     df = load_data()
